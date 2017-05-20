@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>For DAWN</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="{{settings.STATIC_URL}}dist/baguetteBox.css">
+<link rel="stylesheet" href="{{settings.STATIC_URL}}css/style.css">
+<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js">
+</script>
+<style type="text/css">
+        html {
+            height: 100%;
+            background: #1ABC9C;
+            background: -moz-linear-gradient(-45deg,  #1ABC9C 0%, #2980B9 100%);
+            background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#1ABC9C), color-stop(100%,#2980B9));
+            background: -webkit-linear-gradient(-45deg,  #1ABC9C 0%,#2980B9 100%);
+            background: -o-linear-gradient(-45deg,  #1ABC9C 0%,#2980B9 100%);
+            background: -ms-linear-gradient(-45deg,  #1ABC9C 0%,#2980B9 100%);
+            background: linear-gradient(135deg,  #1ABC9C 0%,#2980B9 100%);
+            background-attachment: fixed;
+        }
+</style>
+</head>
+<body>
+<header>
+  <div class='header' style="display: none;">
+    <h1>For you, For us</h1>
+    <p>Happy First Anniversary</p>
+    <p>May 28th</p>
+  </div>
+</header>
+<div class='container' style="display: none;">
+  <div class="baguetteBoxThree gallery">
+  <ul>
+    {% for pic in pics %}
+      <li> 
+        <a class='normal' href='{{settings.MEDIA_URL}}{{pic.pic_path}}'>
+            <img class='normal' src="{{settings.MEDIA_URL}}{{pic.pic_path}}"
+            data_time="{{pic.pic_time|date:'Y-m-d H:i'}}" 
+            alt="{{pic.pic_text}}">
+        </a>
+        <div class='info'>
+          <h3>{{pic.pic_title}}</h3>
+          <p>{{pic.pic_time|date:"Y-m-d A h:i"}}</p>
+          <p>{{pic.pic_text|slice:":60"}}</p>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+  </div>
+</div>
+<img class="hearts" src="{{settings.STATIC_URL}}svg-loaders/hearts.svg" width="80" style="display: none;">
+<script type="text/javascript">
+  var mg_top = ((parseInt($(window).height()) - parseInt($(".hearts").width())) / 2);
+  var mg_left = ((parseInt($(window).width()) - parseInt($(".hearts").width())) / 2);
+  $(".hearts").css({
+      "margin-top": "" + mg_top + "px",
+      "margin-left": "" + mg_left + "px",
+      "display": "block"
+  });
+</script>
+<script src="{{settings.STATIC_URL}}dist/baguetteBox.js" async></script>
+<script src="{{settings.STATIC_URL}}js/highlight.min.js" async></script>
+<script src="{{settings.STATIC_URL}}js/index.js"></script>
+<script src="{{settings.STATIC_URL}}js/jquery.min.js"></script>
+<script>
+window.onload = function() {
+    // baguetteBox.run('.baguetteBoxOne');
+    // baguetteBox.run('.baguetteBoxTwo');
+    baguetteBox.run('.baguetteBoxThree', {
+        animation: 'fadeIn',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+        }
+    });
+    // baguetteBox.run('.baguetteBoxFour', {
+    //    buttons: false
+    // });
+    // baguetteBox.run('.baguetteBoxFive', {
+    //     captions: function(element) {
+    //         return element.getElementsByTagName('img')[0].alt;
+    //     }
+    // });
+    // if (typeof oldIE === 'undefined' && Object.keys) {
+    //     hljs.initHighlighting();
+    // }
+    function div_show(){
+         $(".hearts").css({
+                 "display": "none"
+            });
+        $(".container").fadeIn("3000");
+        $(".header").fadeIn("3000");
+    }
+    setTimeout(div_show,3000)
+};
+</script>
+</body>
+</html>
+
