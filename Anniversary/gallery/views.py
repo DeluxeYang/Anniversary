@@ -9,3 +9,8 @@ def index(request):
 		'pics': pics,
 		'settings': settings,
 		})
+
+def text(request):
+	return render(request, 'text.html', {
+		'settings': settings,
+		})

@@ -52,8 +52,10 @@
   </div>
 </div>
 <img class="hearts" src="{{settings.STATIC_URL}}svg-loaders/hearts.svg" width="80" style="display: none;">
-<div class="text">
+<div  class="text" style="display: none; height: 100%;" onclick="fadeInTwo();">
+  <iframe src="/text/" id="iframepage" name="iframepage" frameBorder=0 scrolling=no width="100%"  onLoad="IframeLoadEND();"></iframe>
 </div>
+
 
 <script type="text/javascript">
 var mg_top = ((parseInt($(window).height()) - parseInt($(".hearts").width())) / 2);
@@ -69,7 +71,44 @@ $(".hearts").css({
 <script src="{{settings.STATIC_URL}}js/index.js"></script>
 <script src="{{settings.STATIC_URL}}js/jquery.min.js"></script>
 <script>
-window.onload = function() {
+  // 定义一个函数，定时调用并刷新iframe高度  
+  function reinitIframe(){  
+  var iframe = document.getElementById("iframepage");  
+  try{  
+      var bHeight = iframe.contentWindow.document.body.scrollHeight;  
+      var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;  
+      var height = Math.max(bHeight, dHeight);  
+      iframe.height = height;  
+  }catch (ex){}  
+  }  
+    
+  var timer1 = window.setInterval("reinitIframe()", 500); //定时调用开始  
+    
+  //完毕后干掉定时器  
+  function IframeLoadEND(){  
+  var iframe = document.getElementById("iframepage");  
+  try{  
+      window.clearInterval(timer1);  
+      var bHeight = iframe.contentWindow.document.body.scrollHeight;  
+      var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;  
+      var height = Math.max(bHeight, dHeight);  
+      iframe.height = height;  
+  }catch (ex){}  
+      // 停止定时  
+      window.clearInterval(timer1);  
+    
+  }  
+  function fadeInOne(){
+      $(".hearts").css({"display": "none"});
+      $(".text").fadeIn("3000");
+      //fadeInTwo()
+  }
+  function fadeInTwo(){
+      $(".text").css({"display": "none"});
+      $(".container").fadeIn("3000");
+      $(".header").fadeIn("3000");
+  }
+  window.onload = function() {
     // baguetteBox.run('.baguetteBoxOne');
     // baguetteBox.run('.baguetteBoxTwo');
     baguetteBox.run('.baguetteBoxThree', {
@@ -89,17 +128,8 @@ window.onload = function() {
     // if (typeof oldIE === 'undefined' && Object.keys) {
     //     hljs.initHighlighting();
     // }
-    function fadeInOne(){
-        $(".hearts").css({"display": "none"});
-        //$(".text").fadeIn("3000");
-        fadeInTwo()
-    }
-    function fadeInTwo(){
-        //$(".text").css({"display": "none"});
-        $(".container").fadeIn("3000");
-        $(".header").fadeIn("3000");
-    }
-    $(".text").click(function(){
+
+    $("html").click(function(){
       fadeInTwo();
     });
     setTimeout(fadeInOne,3000)
