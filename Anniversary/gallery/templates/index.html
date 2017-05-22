@@ -10,17 +10,17 @@
 <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js">
 </script>
 <style type="text/css">
-        html {
-            height: 100%;
-            background: #1ABC9C;
-            background: -moz-linear-gradient(-45deg,  #1ABC9C 0%, #2980B9 100%);
-            background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#1ABC9C), color-stop(100%,#2980B9));
-            background: -webkit-linear-gradient(-45deg,  #1ABC9C 0%,#2980B9 100%);
-            background: -o-linear-gradient(-45deg,  #1ABC9C 0%,#2980B9 100%);
-            background: -ms-linear-gradient(-45deg,  #1ABC9C 0%,#2980B9 100%);
-            background: linear-gradient(135deg,  #1ABC9C 0%,#2980B9 100%);
-            background-attachment: fixed;
-        }
+  html {
+      height: 100%;
+      background: #1ABC9C;
+      background: -moz-linear-gradient(-45deg,  #1ABC9C 0%, #2980B9 100%);
+      background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#1ABC9C), color-stop(100%,#2980B9));
+      background: -webkit-linear-gradient(-45deg,  #1ABC9C 0%,#2980B9 100%);
+      background: -o-linear-gradient(-45deg,  #1ABC9C 0%,#2980B9 100%);
+      background: -ms-linear-gradient(-45deg,  #1ABC9C 0%,#2980B9 100%);
+      background: linear-gradient(135deg,  #1ABC9C 0%,#2980B9 100%);
+      background-attachment: fixed;
+  }
 </style>
 </head>
 <body>
@@ -52,14 +52,17 @@
   </div>
 </div>
 <img class="hearts" src="{{settings.STATIC_URL}}svg-loaders/hearts.svg" width="80" style="display: none;">
+<div class="text">
+</div>
+
 <script type="text/javascript">
-  var mg_top = ((parseInt($(window).height()) - parseInt($(".hearts").width())) / 2);
-  var mg_left = ((parseInt($(window).width()) - parseInt($(".hearts").width())) / 2);
-  $(".hearts").css({
-      "margin-top": "" + mg_top + "px",
-      "margin-left": "" + mg_left + "px",
-      "display": "block"
-  });
+var mg_top = ((parseInt($(window).height()) - parseInt($(".hearts").width())) / 2);
+var mg_left = ((parseInt($(window).width()) - parseInt($(".hearts").width())) / 2);
+$(".hearts").css({
+    "margin-top": "" + mg_top + "px",
+    "margin-left": "" + mg_left + "px",
+    "display": "block"
+});
 </script>
 <script src="{{settings.STATIC_URL}}dist/baguetteBox.js" async></script>
 <script src="{{settings.STATIC_URL}}js/highlight.min.js" async></script>
@@ -86,14 +89,20 @@ window.onload = function() {
     // if (typeof oldIE === 'undefined' && Object.keys) {
     //     hljs.initHighlighting();
     // }
-    function div_show(){
-         $(".hearts").css({
-                 "display": "none"
-            });
+    function fadeInOne(){
+        $(".hearts").css({"display": "none"});
+        //$(".text").fadeIn("3000");
+        fadeInTwo()
+    }
+    function fadeInTwo(){
+        //$(".text").css({"display": "none"});
         $(".container").fadeIn("3000");
         $(".header").fadeIn("3000");
     }
-    setTimeout(div_show,3000)
+    $(".text").click(function(){
+      fadeInTwo();
+    });
+    setTimeout(fadeInOne,3000)
 };
 </script>
 </body>
