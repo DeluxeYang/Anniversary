@@ -10,7 +10,7 @@ def index(request):
 		'settings': settings,
 		})
 
-def text(request):
-	return render(request, 'text.html', {
+def letter(request):
+	return render(request, 'letter.html', {
 		'settings': settings,
 		})

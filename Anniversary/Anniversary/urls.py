@@ -18,12 +18,12 @@ from django.contrib import admin
 from django.conf import settings
 from django.views.static import serve
 
-from gallery.views import index, text
+from gallery.views import index, letter
 
 
 urlpatterns = [
 	url(r'^$', index),
-    url(r'^text/$', text),
+    url(r'^letter/$', letter),
 	url(r'^upload/(?P<path>.*)$',serve, {'document_root': settings.MEDIA_ROOT}),
     url(r'^admin/', admin.site.urls),
 ]

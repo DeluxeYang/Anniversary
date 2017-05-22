@@ -360,3 +360,9 @@ header p {
 .container p {
   font-family: "BreeSerif","微软雅黑";
 }
+
+html,body{ height:100%; margin:0; padding:0} 
+
+.mask{height:100%; width:100%; position:fixed; _position:absolute; top:0; z-index:1000; } 
+
+.opacity{ opacity:0; filter: alpha(opacity=0); background-color:#000; } 

@@ -26,7 +26,7 @@
 <body>
 <header>
   <div class='header' style="display: none;">
-    <h1>For you, For us</h1>
+    <h1 class="letter">For you, For us</h1>
     <p>Happy First Anniversary</p>
     <p>May 28th</p>
   </div>
@@ -51,12 +51,12 @@
   </ul>
   </div>
 </div>
+
 <img class="hearts" src="{{settings.STATIC_URL}}svg-loaders/hearts.svg" width="80" style="display: none;">
-<div  class="text" style="display: none; height: 100%;" onclick="fadeInTwo();">
-  <iframe src="/text/" id="iframepage" name="iframepage" frameBorder=0 scrolling=no width="100%"  onLoad="IframeLoadEND();"></iframe>
-</div>
-
-
+<!-- <div class="text" style="display: none;">
+  <div class="mask opacity"></div> 
+  <iframe class="text" src="/text/" id="iframepage" name="iframepage" frameBorder=0 scrolling=no width="100%" onLoad="IframeLoadEND();" style="display: none;"></iframe>
+</div> -->
 <script type="text/javascript">
 var mg_top = ((parseInt($(window).height()) - parseInt($(".hearts").width())) / 2);
 var mg_left = ((parseInt($(window).width()) - parseInt($(".hearts").width())) / 2);
@@ -71,40 +71,41 @@ $(".hearts").css({
 <script src="{{settings.STATIC_URL}}js/index.js"></script>
 <script src="{{settings.STATIC_URL}}js/jquery.min.js"></script>
 <script>
-  // 定义一个函数，定时调用并刷新iframe高度  
-  function reinitIframe(){  
-  var iframe = document.getElementById("iframepage");  
-  try{  
-      var bHeight = iframe.contentWindow.document.body.scrollHeight;  
-      var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;  
-      var height = Math.max(bHeight, dHeight);  
-      iframe.height = height;  
-  }catch (ex){}  
-  }  
+  // // 定义一个函数，定时调用并刷新iframe高度  
+  // function reinitIframe(){  
+  // var iframe = document.getElementById("iframepage");  
+  // try{  
+  //     var bHeight = iframe.contentWindow.document.body.scrollHeight;  
+  //     var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;  
+  //     var height = Math.max(bHeight, dHeight);  
+  //     iframe.height = height;  
+  // }catch (ex){}  
+  // }  
     
-  var timer1 = window.setInterval("reinitIframe()", 500); //定时调用开始  
+  // var timer1 = window.setInterval("reinitIframe()", 500); //定时调用开始  
     
-  //完毕后干掉定时器  
-  function IframeLoadEND(){  
-  var iframe = document.getElementById("iframepage");  
-  try{  
-      window.clearInterval(timer1);  
-      var bHeight = iframe.contentWindow.document.body.scrollHeight;  
-      var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;  
-      var height = Math.max(bHeight, dHeight);  
-      iframe.height = height;  
-  }catch (ex){}  
-      // 停止定时  
-      window.clearInterval(timer1);  
+  // //完毕后干掉定时器  
+  // function IframeLoadEND(){  
+  // var iframe = document.getElementById("iframepage");  
+  // try{  
+  //     window.clearInterval(timer1);  
+  //     var bHeight = iframe.contentWindow.document.body.scrollHeight;  
+  //     var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;  
+  //     var height = Math.max(bHeight, dHeight);  
+  //     iframe.height = height;  
+  // }catch (ex){}  
+  //     // 停止定时  
+  //     window.clearInterval(timer1);  
     
-  }  
+  // }  
   function fadeInOne(){
       $(".hearts").css({"display": "none"});
-      $(".text").fadeIn("3000");
-      //fadeInTwo()
+      //$(".text").fadeIn("3000");
+      fadeInTwo()
   }
   function fadeInTwo(){
-      $(".text").css({"display": "none"});
+      //$(".hearts").css({"display": "none"});
+      //$(".text").css({"display": "none"});
       $(".container").fadeIn("3000");
       $(".header").fadeIn("3000");
   }
@@ -128,11 +129,14 @@ $(".hearts").css({
     // if (typeof oldIE === 'undefined' && Object.keys) {
     //     hljs.initHighlighting();
     // }
-
-    $("html").click(function(){
-      fadeInTwo();
+    var timeoutProcess = setTimeout(fadeInOne,3000)
+    // $(".mask").click(function(){
+    //   clearTimeout(timeoutProcess);
+    //   fadeInTwo();
+    // });
+    $(".letter").click(function(){
+      window.location.href="/letter/";
     });
-    setTimeout(fadeInOne,3000)
 };
 </script>
 </body>
