@@ -53,10 +53,10 @@
 </div>
 
 <img class="hearts" src="{{settings.STATIC_URL}}svg-loaders/hearts.svg" width="80" style="display: none;">
-<!-- <div class="text" style="display: none;">
+<div class="text">
   <div class="mask opacity"></div> 
-  <iframe class="text" src="/text/" id="iframepage" name="iframepage" frameBorder=0 scrolling=no width="100%" onLoad="IframeLoadEND();" style="display: none;"></iframe>
-</div> -->
+  <!-- <iframe class="text" src="/text/" id="iframepage" name="iframepage" frameBorder=0 scrolling=no width="100%" onLoad="IframeLoadEND();" style="display: none;"></iframe> -->
+</div>
 <script type="text/javascript">
 var mg_top = ((parseInt($(window).height()) - parseInt($(".hearts").width())) / 2);
 var mg_left = ((parseInt($(window).width()) - parseInt($(".hearts").width())) / 2);
@@ -104,8 +104,8 @@ $(".hearts").css({
       fadeInTwo()
   }
   function fadeInTwo(){
-      //$(".hearts").css({"display": "none"});
-      //$(".text").css({"display": "none"});
+      $(".hearts").css({"display": "none"});
+      $(".text").css({"display": "none"});
       $(".container").fadeIn("3000");
       $(".header").fadeIn("3000");
   }
@@ -130,10 +130,10 @@ $(".hearts").css({
     //     hljs.initHighlighting();
     // }
     var timeoutProcess = setTimeout(fadeInOne,3000)
-    // $(".mask").click(function(){
-    //   clearTimeout(timeoutProcess);
-    //   fadeInTwo();
-    // });
+    $(".mask").click(function(){
+      clearTimeout(timeoutProcess);
+      fadeInTwo();
+    });
     $(".letter").click(function(){
       window.location.href="/letter/";
     });
