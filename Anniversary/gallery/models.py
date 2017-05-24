@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from django.utils.timezone import get_default_timezone
 # Create your models here.
 
 class pic(models.Model):
@@ -9,6 +10,6 @@ class pic(models.Model):
     pic_path = models.ImageField(upload_to='images/')
     pic_text = models.TextField(null=True, blank=True)
 
-    def __str__(self):  # __unicode__ on Python 2
-        pic_time = datetime.datetime.strftime(self.pic_time, '%Y-%m-%d')
+    def __str__(self):  # 数据库为UTC时间，这里要手动的根据TIME_ZONE转换回来
+        pic_time = self.pic_time.astimezone(get_default_timezone()).strftime('%Y-%m-%d')
         return self.pic_title + " " + pic_time

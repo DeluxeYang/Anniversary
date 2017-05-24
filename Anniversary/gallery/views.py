@@ -14,10 +14,6 @@ def index(request):
 		})
 
 def letter(request):
-	n = datetime.datetime.now()
-	pics = pic.objects.create(pic_title="1",pic_time=n.strftime('%Y-%m-%d %H:%M:%S'),pic_path="/",pic_text="a")
-	#pt = pics.pic_time.astimezone(get_default_timezone())
-	# get_default_timezone().normalize()
-	# dt = datetime.datetime.strftime(pt, '%Y-%m-%d %H:%M:%S')
-	
-	return HttpResponse(pics.pic_time)
+	return render(request, 'letter.html', {
+		'settings': settings,
+		})
