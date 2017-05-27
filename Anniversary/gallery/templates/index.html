@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <title>For DAWN</title>
 <meta charset="UTF-8">
-<link REL="SHORTCUT ICON" HREF="{{settings.STATIC_URL}}images/favicon.ico">
-<link rel="stylesheet" href="{{settings.STATIC_URL}}dist/baguetteBox.css">
-<link rel="stylesheet" href="{{settings.STATIC_URL}}css/style.css">
+<link REL="SHORTCUT ICON" HREF="{{settings.PROXY_PREFIX}}{{settings.STATIC_URL}}images/favicon.ico">
+<link rel="stylesheet" href="{{settings.PROXY_PREFIX}}{{settings.STATIC_URL}}dist/baguetteBox.css">
+<link rel="stylesheet" href="{{settings.PROXY_PREFIX}}{{settings.STATIC_URL}}css/style.css">
 <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js">
 </script>
 <style type="text/css">
@@ -36,8 +36,8 @@
   <ul>
     {% for pic in pics %}
       <li> 
-        <a class='normal' href='{{settings.MEDIA_URL}}{{pic.pic_path}}'>
-            <img class='normal' src="{{settings.MEDIA_URL}}{{pic.pic_path}}"
+        <a class='normal' href='{{settings.PROXY_PREFIX}}{{settings.MEDIA_URL}}{{pic.pic_path}}'>
+            <img class='normal' src="{{settings.PROXY_PREFIX}}{{settings.MEDIA_URL}}{{pic.pic_path}}"
             data_time="{{pic.pic_time|date:'Y-m-d H:i'}}" 
             alt="{{pic.pic_text}}">
         </a>
@@ -52,7 +52,7 @@
   </div>
 </div>
 
-<img class="hearts" src="{{settings.STATIC_URL}}svg-loaders/hearts.svg" width="80" style="display: none;">
+<img class="hearts" src="{{settings.PROXY_PREFIX}}{{settings.STATIC_URL}}svg-loaders/hearts.svg" width="80" style="display: none;">
 <div class="text">
   <div class="mask opacity"></div> 
   <!-- <iframe class="text" src="/text/" id="iframepage" name="iframepage" frameBorder=0 scrolling=no width="100%" onLoad="IframeLoadEND();" style="display: none;"></iframe> -->
@@ -66,10 +66,10 @@ $(".hearts").css({
     "display": "block"
 });
 </script>
-<script src="{{settings.STATIC_URL}}dist/baguetteBox.js" async></script>
-<script src="{{settings.STATIC_URL}}js/highlight.min.js" async></script>
-<script src="{{settings.STATIC_URL}}js/index.js"></script>
-<script src="{{settings.STATIC_URL}}js/jquery.min.js"></script>
+<script src="{{settings.PROXY_PREFIX}}{{settings.STATIC_URL}}dist/baguetteBox.js" async></script>
+<script src="{{settings.PROXY_PREFIX}}{{settings.STATIC_URL}}js/highlight.min.js" async></script>
+<script src="{{settings.PROXY_PREFIX}}{{settings.STATIC_URL}}js/index.js"></script>
+<script src="{{settings.PROXY_PREFIX}}{{settings.STATIC_URL}}js/jquery.min.js"></script>
 <script>
   // // 定义一个函数，定时调用并刷新iframe高度  
   // function reinitIframe(){  
@@ -135,7 +135,7 @@ $(".hearts").css({
       fadeInTwo();
     });
     $(".letter").click(function(){
-      window.location.href="/letter/";
+      window.location.href="{{settings.PROXY_PREFIX}}/letter/";
     });
 };
 </script>
