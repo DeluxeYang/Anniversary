@@ -2,6 +2,10 @@ from django.db import models
 import datetime
 from django.utils.timezone import get_default_timezone
 # Create your models here.
+class letter(models.Model):
+    letter_title = models.CharField(max_length=40,null=True, blank=True)
+    letter_time = models.DateTimeField(null=True, blank=True)
+    letter_text = models.TextField(null=True, blank=True)
 
 class pic(models.Model):
     # 默认主键:id自增
