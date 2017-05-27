@@ -119,9 +119,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-PROXY_PREFIX = '/secret'
-if 'runserver' in sys.argv:
-	PROXY_PREFIX = ''
+PROXY_PREFIX = ''
+# if 'runserver' in sys.argv:
+# 	PROXY_PREFIX = ''
 
 STATIC_URL = '/static/'
 

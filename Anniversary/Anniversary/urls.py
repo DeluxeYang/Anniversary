@@ -25,5 +25,5 @@ urlpatterns = [
     url(r'^$', index),
     url(r'^letter/$', letter),
     url(r'^upload/(?P<path>.*)$',serve, {'document_root': settings.MEDIA_ROOT}),
-    url(r'^manage/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
 ]
