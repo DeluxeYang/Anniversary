@@ -6,6 +6,20 @@
     <meta charset="UTF-8">
     <link REL="SHORTCUT ICON" HREF="{{settings.PROXY_PREFIX}}{{settings.STATIC_URL}}images/favicon.ico">
     <link rel="stylesheet" href="{{settings.PROXY_PREFIX}}{{settings.STATIC_URL}}assets/css/main.css" />
+    <style type="text/css">
+    .letter_text {
+      text-indent: 2em;
+      text-align: left;
+    }
+    .letter_to {
+      text-indent: 0em;
+      text-align: left;
+    }
+    .letter_from {
+      text-indent: 0em;
+      text-align: right;
+    }
+    </style>
   </head>
   <body>
     <section id="one" class="main special">
@@ -16,8 +30,14 @@
             <h2>{{letter.letter_title}}</h2>
             <p>{{letter.letter_time}}</p>
           </header>
+          {% if letter.letter_to %}
+            <p class="letter_to">{{letter.letter_to}}</p>
+          {% endif %}
           {% for i in text %}
-            <p>{{i}}</p>
+            <p class="letter_text">{{i}}</p>
+          {% endfor %}
+          {% for i in letter_from %}
+            <p class="letter_from">{{i}}</p>
           {% endfor %}
         </div>
       </div>

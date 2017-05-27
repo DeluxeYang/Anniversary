@@ -17,8 +17,10 @@ def index(request):
 def letter(request):
     letter_latest = gallery.models.letter.objects.all().latest('letter_time')
     text = letter_latest.letter_text.split('\n')
+    letter_from = letter_latest.letter_from.split('\n')
     return render(request, 'letter.html', {
         'letter':letter_latest,
         'text':text,
+        'letter_from':letter_from,
         'settings': settings,
         })
